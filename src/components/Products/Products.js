@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import productsData from '../../data/products';
 import Product from '../Product/Product';
+import shortid from 'shortid';
 
 const Products = props => {
   const [products]  = useState(productsData);
@@ -8,7 +9,7 @@ const Products = props => {
   return (
     <section>
         <ul>
-          {products.map(product => <Product key={product.name} {...product} />)}
+          {products.map(product => <Product key={shortid()} {...product} />)}
         </ul>
       
     </section>
