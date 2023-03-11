@@ -1,5 +1,4 @@
 import styles from './ProductOptions.module.scss';
-// import { useState } from 'react';
 import PropTypes from 'prop-types';
 import Button from '../Button/Button';
 import OptionSize from '../OptionSize/OptionSize';

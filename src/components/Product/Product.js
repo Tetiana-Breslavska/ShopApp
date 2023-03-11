@@ -1,10 +1,6 @@
 import styles from './Product.module.scss';
-// import clsx from 'clsx';
-
-// import shortid from 'shortid';
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
-
 import ProductImage from '../ProductImage/ProductImage'
 import ProductOptions from '../ProductOptions/ProductOptions'
 
@@ -13,9 +9,9 @@ const Product = props => {
   const [currentColor, setCurrentColor]  = useState(props.colors[0]);
   const [currentSize, setCurrentSize]  = useState(props.sizes[0]);
 
-  const getPrice = () => {
+  const getPrice = useMemo(() => {
     return props.basePrice + currentSize.additionalPrice;
-  }
+  }, [props.basePrice, currentSize.additionalPrice]);
  
   return (
     <article className={styles.product}>
@@ -23,10 +19,10 @@ const Product = props => {
       <div>
         <header>
           <h2 className={styles.name}>{props.title}</h2>
-          <span className={styles.price}>Price: {getPrice()} $</span>
+          <span className={styles.price}>Price: {getPrice} $</span>
         </header>
         <ProductOptions  
-          totalPrice = {getPrice()} 
+          totalPrice = {getPrice} 
           currentColor={currentColor} 
           currentSize={currentSize}
           setCurrentColor={setCurrentColor}
