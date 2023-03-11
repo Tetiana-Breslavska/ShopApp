@@ -3,7 +3,7 @@ import productsData from '../../data/products';
 import Product from '../Product/Product';
 import shortid from 'shortid';
 
-const Products = props => {
+const Products = () => {
   const [products]  = useState(productsData);
 
   return (
@@ -15,5 +15,6 @@ const Products = props => {
     </section>
   );
 };
+
 
 export default Products;

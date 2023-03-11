@@ -1,7 +1,7 @@
 import styles from './ProductImage.module.scss';
 // import clsx from 'clsx';
 // import { useState } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 
 const ProductImage = (props) => {
@@ -13,6 +13,12 @@ const ProductImage = (props) => {
                 src={`${process.env.PUBLIC_URL}/images/products/shirt-${props.name}--${props.currentColor}.jpg`} />
         </div>
     )
+};
+
+ProductImage.propTypes ={
+    title: PropTypes.string.isRequired,
+    currentColor:  PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
 };
 
 export default ProductImage;

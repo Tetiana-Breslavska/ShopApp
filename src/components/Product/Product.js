@@ -3,7 +3,7 @@ import styles from './Product.module.scss';
 
 // import shortid from 'shortid';
 import { useState } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import ProductImage from '../ProductImage/ProductImage'
 import ProductOptions from '../ProductOptions/ProductOptions'
@@ -12,14 +12,14 @@ import ProductOptions from '../ProductOptions/ProductOptions'
 const Product = props => {
   const [currentColor, setCurrentColor]  = useState(props.colors[0]);
   const [currentSize, setCurrentSize]  = useState(props.sizes[0]);
-  
+
   const getPrice = () => {
     return props.basePrice + currentSize.additionalPrice;
   }
  
   return (
     <article className={styles.product}>
-      <ProductImage name = {props.name} currentColor = {currentColor} />
+      <ProductImage name={props.name} currentColor={currentColor} title={props.title}/>
       <div>
         <header>
           <h2 className={styles.name}>{props.title}</h2>
@@ -40,8 +40,13 @@ const Product = props => {
   )
 };
 
-// Product.propTypes ={
-//   products: PropTypes.array.isRequired
+Product.propTypes ={
+  sizes: PropTypes.array.isRequired,
+  colors: PropTypes.array.isRequired,
+  name: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  basePrice: PropTypes.number.isRequired,
 
-// };
+};
+
 export default Product;
