@@ -18,9 +18,30 @@ const Product = props => {
   };
 
   const getPrice = () => {
-    const totalPrice = props.basePrice + currentSize.additionalPrice;
-    return totalPrice;
+   return props.basePrice + currentSize.additionalPrice;
   }
+  const totalPrice = getPrice();
+
+
+  const addToCart = e =>{
+    e.preventDefault();
+    const summary = {
+      name: props.title,
+      price: totalPrice,
+      size: currentSize.name,
+      color: currentColor,
+
+    }  
+    // console.log(summary);
+    console.log(`Summary
+    =========================
+    Name:   ${summary.name}
+    Price:  ${summary.price}
+    Size:   ${summary.size}
+    Color:  ${summary.color}`);
+  }
+  
+
 
   return (
     <article className={styles.product}>
@@ -55,7 +76,7 @@ const Product = props => {
                   </li>)}
             </ul>
           </div>
-          <Button className={styles.button}>
+          <Button className={styles.button} type = 'submit' onClick={(event)=>addToCart(event)}>
             <span className="fa fa-shopping-cart" />
           </Button>
         </form>
